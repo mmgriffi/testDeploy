@@ -32,6 +32,8 @@ $logresults = (get-content c:\temp\installer1.log)
 
 $logresults
 write-host "This ran the installer"
+start-sleep 5 
+remove-item c:\temp\installer1.log
 
 }
 else
