@@ -41,6 +41,8 @@ $errorcode = 999
 
 #===
 
+write-host "Checking installed programs to see if app was installed"
+
 foreach ($prog in $progs) 
 { 
 $progID = $prog.identifyingNumber
@@ -52,6 +54,10 @@ $progversion = $prog.Version
      #write-host "you have installed $progName, version $progversion"
      $installed = $true
      }
+     else
+     {
+     write-host "cannot find the appID"
+     }
 }
 
 if ($installed)
@@ -60,7 +66,7 @@ if ($installed)
 }
 else
 {
-    $exitcode = 999
+    $errorcode = 999
 }
 #===
-exit $errocode
+exit $errorcode
