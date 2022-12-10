@@ -1,6 +1,9 @@
 
 $errorcode = 0
 $mydate = (Get-Date -format "dd-MMM-yyyy_HH_mm")
+
+$id = "ABB6AC00-F1D8-4EBF-8128-830D090B76C0"
+
 function install()
 {
 $command = 'msiexec.exe /i "C:\temp\SQL2000SampleDb.msi" targetdir="c:\temp\sql2000" /quiet /qn /norestart'
@@ -35,5 +38,29 @@ else
 write-host "installer log not written - must be a problem"
 $errorcode = 999
 }
-exit $errocode
 
+#===
+
+foreach ($prog in $progs) 
+{ 
+$progID = $prog.identifyingNumber
+$progName = $prog.Name
+$progversion = $prog.Version
+     
+    if ($progID -eq "{ABB6AC00-F1D8-4EBF-8128-830D090B76C0}")
+     {
+     #write-host "you have installed $progName, version $progversion"
+     $installed = $true
+     }
+}
+
+if ($installed)
+{
+    write-host "you have installed $progName, version $progversion"
+}
+else
+{
+    $exitcode = 999
+}
+#===
+exit $errocode
