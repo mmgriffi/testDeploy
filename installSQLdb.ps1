@@ -1,6 +1,6 @@
 
 $errorcode = 0
-$mydate = (Get-Date -format "dd-MMM-yyyy")
+$mydate = (Get-Date -format "dd-MMM-yyyy_HH_mm")
 function install()
 {
 $command = 'msiexec.exe /i "C:\temp\SQL2000SampleDb.msi" targetdir="c:\temp\sql2000" /quiet /qn /norestart'
