@@ -69,4 +69,6 @@ else
     $errorcode = 999
 }
 #===
+
+write-host "this script will exit with $errorcode"
 exit $errorcode
