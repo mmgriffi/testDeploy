@@ -70,8 +70,9 @@ jobs:
 
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
+          echo will try to execute installSQLdb.ps1
           echo test, and deploy your project.
+          .\installSQLdb.ps1
   F32int_hc:
     runs-on: [self-hosted,Win2016]
     needs: F32int_deploy
