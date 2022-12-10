@@ -1,12 +1,12 @@
 
+$errorcode = 0
+
 function install()
 {
 $command = 'msiexec.exe /i "C:\temp\SQL2000SampleDb.msi" targetdir="c:\temp\sql2000" /quiet /qn /norestart'
 $command = $command + ' /Lv c:\temp\installer1.log'
 
-$logresults = (get-content c:\temp\installer1.log)
 
-$logresults
 
 invoke-expression $command 
 }
@@ -22,4 +22,22 @@ invoke-expression $command
 }
 
 install
+install
+
+
+if (test-path c:\temp\installer1.log)
+{
+$eerrorcode = 0
+$logresults = (get-content c:\temp\installer1.log)
+
+$logresults
 write-host "This ran the installer"
+
+}
+else
+{
+write-host "installer log not written - must be a problem"
+$errorcode = 999
+}
+exit $errocode
+
