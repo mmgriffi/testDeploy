@@ -5,7 +5,7 @@ on:
 
 jobs:
   F32int_preval:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     environment: Int_approval
     steps:
       - uses: actions/checkout@v3
@@ -34,7 +34,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32int_rbprep:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32int_stage
     steps:
       - uses: actions/checkout@v3
@@ -47,7 +47,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32int_audit:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32int_rbprep
     steps:
       - uses: actions/checkout@v3
@@ -60,7 +60,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32int_deploy:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32int_audit
     steps:
       - uses: actions/checkout@v3
@@ -73,7 +73,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32int_hc:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32int_deploy
     steps:
       - uses: actions/checkout@v3
@@ -86,7 +86,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32int_rb:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     environment: RB_approval
     needs: F32int_rbprep
     steps:
@@ -100,7 +100,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32int_notify:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32int_deploy
     steps:
       - uses: actions/checkout@v3
@@ -113,7 +113,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32prod_preval:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     environment: F32Prod_approval
     steps:
       - uses: actions/checkout@v3
@@ -129,7 +129,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32prod_stage:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32prod_preval
     steps:
       - uses: actions/checkout@v3
@@ -142,7 +142,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32prod_rbprep:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32prod_stage
     steps:
       - uses: actions/checkout@v3
@@ -155,7 +155,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32prod_audit:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32prod_rbprep
     steps:
       - uses: actions/checkout@v3
@@ -168,7 +168,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32prod_deploy:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32prod_audit
     steps:
       - uses: actions/checkout@v3
@@ -181,7 +181,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32prod_hc:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32prod_deploy
     steps:
       - uses: actions/checkout@v3
@@ -194,7 +194,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32prod_rb:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     environment: F32prod_RB_approval
     needs: F32prod_rbprep
     steps:
@@ -208,7 +208,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32prod_notify:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32prod_deploy
     steps:
       - uses: actions/checkout@v3
