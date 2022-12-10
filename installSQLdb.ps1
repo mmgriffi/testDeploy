@@ -43,6 +43,7 @@ $errorcode = 999
 
 write-host "Checking installed programs to see if app was installed"
 
+$Progs = (Get-WmiObject Win32_Product| select Name,Version,identifyingNumber)
 foreach ($prog in $progs) 
 { 
 $progID = $prog.identifyingNumber
