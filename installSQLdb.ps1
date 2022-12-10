@@ -42,7 +42,6 @@ $errorcode = 999
 #===
 
 write-host "Checking installed programs to see if app was installed"
-
 $Progs = (Get-WmiObject Win32_Product| select Name,Version,identifyingNumber)
 foreach ($prog in $progs) 
 { 
@@ -53,17 +52,19 @@ $progversion = $prog.Version
     if ($progID -eq "{ABB6AC00-F1D8-4EBF-8128-830D090B76C0}")
      {
      #write-host "you have installed $progName, version $progversion"
+     
+     $myprogName = $progName
+     $myprogVersion = $progVersion
      $installed = $true
+
+     #write-host "installed $progName"
      }
-     else
-     {
-     write-host "cannot find the appID"
-     }
+     
 }
 
 if ($installed)
 {
-    write-host "you have installed $progName, version $progversion"
+    write-host "you have installed $myprogName, version $myprogversion"
 }
 else
 {
