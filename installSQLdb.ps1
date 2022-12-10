@@ -28,7 +28,7 @@ $logresults = (get-content c:\temp\installer1.log)
 $logresults
 write-host "This ran the installer"
 start-sleep 5 
-move-item c:\temp\installer1.log c:\temp\install_${mydate}.log
+move-item c:\temp\installer1.log c:\temp\install_${mydate}.log -force
 }
 else
 {
