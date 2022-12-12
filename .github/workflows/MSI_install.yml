@@ -82,7 +82,7 @@ jobs:
 
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
+          echo Execute HC script.
           .\HC_installSQLdb.ps1
   F32int_rb:
     runs-on: [self-hosted,Win2016]
