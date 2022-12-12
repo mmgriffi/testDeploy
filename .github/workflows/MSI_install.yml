@@ -97,7 +97,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          .\rollBack.ps1 -server F32_int -signalFilePath c:\temp\
+          .\rollBack.ps1 -server F32_int -signalFilePath \\freenas\smb\mmgriffi\CICD
   F32int_notify:
     runs-on: [self-hosted,Win2016]
     needs: F32int_deploy
