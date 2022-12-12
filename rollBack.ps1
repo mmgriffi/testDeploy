@@ -12,12 +12,14 @@ param
 $debug = "yes"
 $errorcode = 0
 $signalFile = "${server}_signal.txt"
+$mydate = (Get-Date -format "dd-MMM-yyyy_HH_mm")
 
+$signal = join-path -path $signalFilePath -childpath $signalFile
 function check_signal
 {
     if (test-path $signalFilePath)
     {
-      $signal = join-path -path $signalFilePath -childpath $signalFile
+      
       if (test-path $signal)
       {
         # if the file exists already. Read it's contents 
@@ -121,5 +123,11 @@ else
     $errorcode = 999
 }
 write-host "will exit with a $errorcode"
+
+$signalFile = "${server}_signal.txt"
+$mydate = (Get-Date -format "dd-MMM-yyyy_HH_mm")
+
+$backupSignal = "{signalFile}_${mydate}"
+move-item $signal $signalFilePath\$backupSignal
 
 exit $errorcode
