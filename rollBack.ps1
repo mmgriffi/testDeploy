@@ -9,7 +9,7 @@ param
 [int]$timeToWaitHrs
 )
 
-$debug = "yes"
+$debug = "no"
 $errorcode = 0
 $signalFile = "${server}_signal.txt"
 $mydate = (Get-Date -format "dd-MMM-yyyy_HH_mm")
@@ -82,6 +82,7 @@ function RUN_Rollback
     if ($debug -eq "no")
     {
     invoke-expression $command 
+    write-host "$command" -ForegroundColor yellow
     }
     else
     {
