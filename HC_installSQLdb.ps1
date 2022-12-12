@@ -7,7 +7,8 @@ $progID = $prog.identifyingNumber
 $progName = $prog.Name
 $progversion = $prog.Version
      
-    if ($progID -eq "{ABB6AC00-F1D8-4EBF-8128-830D090B76C0}")
+#    if ($progID -eq "{ABB6AC00-F1D8-4EBF-8128-830D090B76C0}")
+    if ($progID -eq "{BBB6AC00-F1D8-4EBF-8128-830D090B76C0}")
      {
      #write-host "you have installed $progName, version $progversion"
      
@@ -24,6 +25,7 @@ if ($installed)
 }
 else
 {
+    write-host "Error : did not find the required program"
     $errorcode = 999
 }
 #===
