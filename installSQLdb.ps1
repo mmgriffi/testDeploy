@@ -23,6 +23,8 @@ invoke-expression $command
 
 install
 
+start-sleep 20
+
 if (test-path c:\temp\installer1.log)
 {
 $eerrorcode = 0
