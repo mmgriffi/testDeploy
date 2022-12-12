@@ -87,6 +87,7 @@ jobs:
   F32int_rb:
     runs-on: [self-hosted,Win2016]
     needs: F32int_hc
+    if: always()
     steps:
       - uses: actions/checkout@v3
 
