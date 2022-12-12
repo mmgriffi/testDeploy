@@ -86,7 +86,7 @@ jobs:
           .\HC_installSQLdb.ps1
   F32int_rb:
     runs-on: [self-hosted,Win2016]
-    needs: F32int_rbprep
+    needs: F32int_hc
     steps:
       - uses: actions/checkout@v3
 
@@ -101,6 +101,7 @@ jobs:
   F32int_notify:
     runs-on: [self-hosted,Win2016]
     needs: F32int_deploy
+    environment: Notify_approval
     steps:
       - uses: actions/checkout@v3
 
