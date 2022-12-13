@@ -7,109 +7,62 @@ jobs:
     environment: Int_approval
     steps:
       - uses: actions/checkout@v3
-
-      - name: manual approve
-        run: |
-            echo "Manually approved"
       - name: Run a one-line script
-        run: echo Hello, Mike. This is the F32int_prevalJob!
-
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+        run: echo "Step Approved. This is the F32int_prevalJob!"
   F32int_stage:
     runs-on: [self-hosted,Win2016]
     needs: F32int_preval
     steps:
-      #- uses: actions/checkout@v3
-
-      - name: Run a one-line script
-        run: echo Hello, Mike! This is the F32int_preval job
-
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo "This is the stage."
+          echo "will stage files"
   F32int_rbprep:
     runs-on: [self-hosted,Win2016]
     needs: F32int_stage
     steps:
-      #- uses: actions/checkout@v3
-
       - name: Run a one-line script
-        run: echo Hello, Mike! This is the F32int_rbprep job
+        run: echo "This is the F32int_rbprep job"
 
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
   F32int_audit:
     runs-on: [self-hosted,Win2016]
     needs: F32int_rbprep
     steps:
-      #- uses: actions/checkout@v3
-
       - name: Run a one-line script
-        run: echo Hello, Mike! This is the F32int_audit job
+        run: echo "This is the F32int_audit job"
 
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
   F32int_deploy:
     runs-on: [self-hosted,Win2016]
     needs: F32int_audit
     steps:
-      #- uses: actions/checkout@v3
-
-      - name: Run a one-line script
-        run: echo Hello, Mike! This is the F32int_deploy deployment job
-
       - name: Run a multi-line script
         run: |
-          echo will try to execute installSQLdb.ps1
-          echo test, and deploy your project.
+          echo "Execute installSQLdb.ps1".
           .\installSQLdb.ps1
   F32int_hc:
     runs-on: [self-hosted,Win2016]
     needs: F32int_deploy
     steps:
-      #- uses: actions/checkout@v3
-
-      - name: Run a one-line script
-        run: echo Hello, Mike! This is the F32int_hc job
-
       - name: Run a multi-line script
         run: |
-          echo Execute HC script.
+          echo "Execute HC script".
           .\HC_installSQLdb.ps1
   F32int_rb:
     runs-on: [self-hosted,Win2016]
     needs: F32int_hc
     if: always()
     steps:
-      #- uses: actions/checkout@v3
-
       - name: Run a one-line script
         run: echo Hello, Mike! This is the F32int_rb job - only run on failure
 
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo "This is the F32int_rb job - only run on failure".
           .\rollBack.ps1 -server F32_int -signalFilePath \\freenas\smb\mmgriffi\CICD -timeToWaitHrs 10
   F32int_notify:
     runs-on: [self-hosted,Win2016]
     needs: F32int_deploy
     environment: Notify_approval
     steps:
-      #- uses: actions/checkout@v3
-
       - name: Run a one-line script
-        run: echo Hello, Mike! This is the F32int_notify job
-
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+        run: echo "Hello, Mike! This is the F32int_notify job"
