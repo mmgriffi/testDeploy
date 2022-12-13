@@ -74,7 +74,7 @@ function RUN_Rollback
 
     $id = "ABB6AC00-F1D8-4EBF-8128-830D090B76C0"
 
-    $command = 'msiexec.exe /x  "C:\temp\SQL2000SampleDb.msi" /quiet /qn /norestart '
+    $command = 'msiexec.exe /x  "SQL2000SampleDb.msi" /quiet /qn /norestart '
     $command = $command + ' /Lv c:\temp\uninstaller.log'
     #$command | out-file c:\temp\installCommandline.txt
     #& $command
