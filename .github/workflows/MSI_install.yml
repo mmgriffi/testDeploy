@@ -19,10 +19,10 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
   F32int_stage:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,Win2016]
     needs: F32int_preval
     steps:
-      - uses: actions/checkout@v3
+      #- uses: actions/checkout@v3
 
       - name: Run a one-line script
         run: echo Hello, Mike! This is the F32int_preval job
@@ -35,7 +35,7 @@ jobs:
     runs-on: [self-hosted,Win2016]
     needs: F32int_stage
     steps:
-      - uses: actions/checkout@v3
+      #- uses: actions/checkout@v3
 
       - name: Run a one-line script
         run: echo Hello, Mike! This is the F32int_rbprep job
@@ -48,7 +48,7 @@ jobs:
     runs-on: [self-hosted,Win2016]
     needs: F32int_rbprep
     steps:
-      - uses: actions/checkout@v3
+      #- uses: actions/checkout@v3
 
       - name: Run a one-line script
         run: echo Hello, Mike! This is the F32int_audit job
@@ -61,7 +61,7 @@ jobs:
     runs-on: [self-hosted,Win2016]
     needs: F32int_audit
     steps:
-      - uses: actions/checkout@v3
+      #- uses: actions/checkout@v3
 
       - name: Run a one-line script
         run: echo Hello, Mike! This is the F32int_deploy deployment job
@@ -75,7 +75,7 @@ jobs:
     runs-on: [self-hosted,Win2016]
     needs: F32int_deploy
     steps:
-      - uses: actions/checkout@v3
+      #- uses: actions/checkout@v3
 
       - name: Run a one-line script
         run: echo Hello, Mike! This is the F32int_hc job
@@ -89,7 +89,7 @@ jobs:
     needs: F32int_hc
     if: always()
     steps:
-      - uses: actions/checkout@v3
+      #- uses: actions/checkout@v3
 
       - name: Run a one-line script
         run: echo Hello, Mike! This is the F32int_rb job - only run on failure
@@ -104,7 +104,7 @@ jobs:
     needs: F32int_deploy
     environment: Notify_approval
     steps:
-      - uses: actions/checkout@v3
+      #- uses: actions/checkout@v3
 
       - name: Run a one-line script
         run: echo Hello, Mike! This is the F32int_notify job
