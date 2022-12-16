@@ -96,6 +96,11 @@ $TimeStart = Get-Date
 $TimeEnd = $timeStart.addminutes($timeToWaitHrs)
 Write-Host "Start Time: $TimeStart"
 write-host "End Time:   $TimeEnd"
+Write-host "READ THIS : Map/open the $signal file. It's created as a 1 line file with ROLLBACK: as the content "
+Write-host "If you want to execute a rollback, add a YES after the colon and save it"
+Write-host "If no rollback is required, just add NO and save"
+Write-host "This script will loop for $timeToWaitHrs hours, and end with a failure code if not response is indicatged"
+
 Do { 
  $TimeNow = Get-Date
  if ($TimeNow -ge $TimeEnd) {
