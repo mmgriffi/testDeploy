@@ -52,7 +52,7 @@ jobs:
           .\HC_installSQLdb.ps1
   F32int_rb:
     runs-on: [self-hosted,Win2016]
-    timeout-minutes: 20
+    timeout-minutes: 6
     needs: F32int_hc
     if: always()
     steps:
