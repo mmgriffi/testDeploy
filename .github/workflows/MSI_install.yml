@@ -54,7 +54,7 @@ jobs:
   F32int_rb:
     runs-on: [self-hosted,Win2016]
     timeout-minutes: 6
-    if: ${{always()}}
+    #if: ${{always()}}
     needs: [F32int_deploy, F32int_hc]
     steps:
       - name: Run a one-line script
