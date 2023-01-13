@@ -1,10 +1,12 @@
 name: CI_app
 on:
   workflow_dispatch:
+
 jobs:
   F32int_preval:
     runs-on: [self-hosted,Win2016]
     environment: Int_approval
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v3
       # checkout~v3 checked out the files from the repo to the target machine. Run one time per workflow.
@@ -50,6 +52,7 @@ jobs:
           .\HC_installSQLdb.ps1
   F32int_rb:
     runs-on: [self-hosted,Win2016]
+    timeout-minutes: 20
     needs: F32int_hc
     if: always()
     steps:
