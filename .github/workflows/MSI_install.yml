@@ -62,7 +62,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo "This is the F32int_rb job - only run on failure".
-          .\rollBack.ps1 -server F32_int -signalFilePath \\freenas\smb\mmgriffi\CICD -timeToWaitHrs 10
+          .\rollBack.ps1 -server F32_int -signalFilePath \\freenas\smb\mmgriffi\CICD -timeToWaitHrs 120
           #This script will create and check a file "<F32_int>_signal.txt" on a loop over a specified time
           #If admins updates the file to "NO" then rollback is skipped. If "YES" is added rollback is run and step completes.
           #If no response is given in the time, the job will complete with a failure without rollback.
