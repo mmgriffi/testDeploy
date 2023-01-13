@@ -32,8 +32,9 @@ jobs:
     needs: F32int_rbprep
     steps:
       - name: Run a one-line script
-        run: echo "This is the F32int_audit job"
-
+        run: |
+             echo "This is the F32int_audit job"
+             .\giveError.ps1
   F32int_deploy:
     runs-on: [self-hosted,Win2016]
     needs: F32int_audit
