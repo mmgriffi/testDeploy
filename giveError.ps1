@@ -1,3 +1,3 @@
-write-host "We will post an 999 error on this script no matter what"
-$error = 999
-exit $error
+$errorcode = 999
+write-host "We will post an $errorcode on this script no matter what"
+exit $errorcode
