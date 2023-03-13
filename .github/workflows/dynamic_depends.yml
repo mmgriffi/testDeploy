@@ -1,0 +1,25 @@
+name: CI_app
+on:
+  workflow_dispatch:
+
+jobs:
+  F32int_preval:
+    runs-on: [self-hosted,Win2016]
+    environment: Int_approval
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v3
+      # checkout~v3 checked out the files from the repo to the target machine. Run one time per workflow.
+      - name: Run a one-line script
+        run: |
+           .\test-path.ps1 -mypath ${{ vars.CI_PROJECT_DIR }}
+           echo "Path found . This is the F32int_prevalJob!"
+           copy main-script.ps1 ${{ vars.CI_PROJECT_DIR }}
+  F32int_prep:
+    runs-on: [self-hosted,Win2016]
+    needs: F32int_preval
+    steps:
+      - name: Run a Powershell script
+        run: |
+             echo "This is the F32int_audit job"
+             .\$CI_PROJECT_DIR\main-script.ps1 -CI_PROJECT_DIR $CI_PROJECT_DIR -site $site  -sourcefile $sourcefile -LogFile $log_file
