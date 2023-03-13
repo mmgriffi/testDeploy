@@ -11,7 +11,9 @@ jobs:
       - uses: actions/checkout@v3
       # checkout~v3 checked out the files from the repo to the target machine. Run one time per workflow.
       - name: Run a one-line script
-        run: echo "Step Approved. This is the F32int_prevalJob!"
+        run: |
+           .\test-path.ps1 -mypath "d:\temp"
+           echo "Step Approved. This is the F32int_prevalJob!"
   F32int_stage:
     runs-on: [self-hosted,Win2016]
     needs: F32int_preval
