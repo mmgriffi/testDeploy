@@ -12,7 +12,7 @@ jobs:
       # checkout~v3 checked out the files from the repo to the target machine. Run one time per workflow.
       - name: Run a one-line script
         run: |
-           .\test-path.ps1 -mypath $CI_PROJECT_DIR
+           .\test-path.ps1 -mypath ${{ vars.CI_PROJECT_DIR }}
            echo "Step Approved. This is the F32int_prevalJob!"
   F32int_stage:
     runs-on: [self-hosted,Win2016]
