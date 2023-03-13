@@ -22,4 +22,4 @@ jobs:
       - name: Run a Powershell script
         run: |
              echo "This is the F32int_audit job"
-             .\$CI_PROJECT_DIR\main-script.ps1 -CI_PROJECT_DIR $CI_PROJECT_DIR -site $site  -sourcefile $sourcefile -LogFile $log_file
+             powershell -file $CI_PROJECT_DIR\main-script.ps1 -CI_PROJECT_DIR $CI_PROJECT_DIR -site $site  -sourcefile $sourcefile -LogFile $log_file
