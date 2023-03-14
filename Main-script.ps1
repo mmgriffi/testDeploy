@@ -14,29 +14,30 @@ $OutputVariable = @('clvwsrv2016n3','kyvwdc01')
 Write-Host "Nodes List from DNS: " $OutputVariable 
 
 $config = "
-stages:
-  - contain
-  - deploy_postval
-  - rollback
-  - uncontain
+name: CI_app
+on:
+  workflow_dispatch:
+
+jobs:
 "
 
 foreach ($server in $OutputVariable){
     Write-Output $server
 
     $config += "
-$server-contain:
-    stage: contain
-    before_script:
-        - echo `$CI_PROJECT_DIR
-        - cd `$CI_PROJECT_DIR\Scripts
-    script:
-        - echo 'Begin contain for $server'
-        - invoke-command -computername ${server} -scriptblock { dir c:\temp }  
-    when: 'manual'
-    tags:
-        - deploy_mit_$site
-
+  $server-preval:
+    runs-on: [self-hosted,Win2016,$server]
+    environment: Int_approval
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v3
+      # checkout~v3 checked out the files from the repo to the target machine. Run one time per workflow.
+      - name: Run a one-line script
+        run: |
+           .\test-path.ps1 -mypath ${{ vars.CI_PROJECT_DIR }}
+           echo "Path found . This is the F32int_prevalJob!"
+           copy test-path.ps1 ${{ vars.CI_PROJECT_DIR }}
+           powershell invoke-command -computername ${server} -scriptblock { dir c:\temp }  
 "
 #this will generate multiple files base on site name
 #$config | Out-File .\dynamic-config\$server-config-ci.yml -Encoding utf8
