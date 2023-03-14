@@ -24,7 +24,7 @@ jobs:
 foreach ($server in $OutputVariable){
     Write-Output $server
 
-    $config += "
+  $config += "
   $server-preval:
     runs-on: [self-hosted,Win2016,$server]
     environment: Int_approval
@@ -35,7 +35,7 @@ foreach ($server in $OutputVariable){
       - name: Run a one-line script
         run: |
            .\test-path.ps1 -mypath ${{ vars.CI_PROJECT_DIR }}
-           echo "Path found . This is the F32int_prevalJob!"
+           echo 'Path found . This is the F32int_prevalJob!'
            copy test-path.ps1 ${{ vars.CI_PROJECT_DIR }}
            powershell invoke-command -computername ${server} -scriptblock { dir c:\temp }  
 "
