@@ -34,9 +34,9 @@ foreach ($server in $OutputVariable){
       # checkout~v3 checked out the files from the repo to the target machine. Run one time per workflow.
       - name: Run a one-line script
         run: |
-           .\test-path.ps1 -mypath ${{ vars.CI_PROJECT_DIR }}
+           .\test-path.ps1 -mypath ${CI_PROJECT_DIR}
            echo 'Path found . This is the F32int_prevalJob!'
-           copy test-path.ps1 ${{ vars.CI_PROJECT_DIR }}
+           #copy test-path.ps1 ${CI_PROJECT_DIR}
            powershell invoke-command -computername ${server} -scriptblock { dir c:\temp }  
 "
 #this will generate multiple files base on site name
