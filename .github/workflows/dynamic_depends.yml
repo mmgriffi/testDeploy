@@ -29,4 +29,9 @@ jobs:
           name: dynamic-config
           path: |
             dynamic-config\dynamic-config-ci.yml
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+         name: dynamic-config
+         path: ${{ vars.CI_PROJECT_DIR }}
                          
