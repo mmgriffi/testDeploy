@@ -26,7 +26,7 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: upload dynamic script
+          name: dynamic-config
           path: |
             dynamic-config\dynamic-config-ci.yml
                          
