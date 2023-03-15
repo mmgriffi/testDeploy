@@ -28,5 +28,5 @@ jobs:
         with:
           name: upload dynamic script
           path: |
-            ${{ vars.CI_PROJECT_DIR }}\dynamic-config\dynamic-config-ci.yml
+            dynamic-config\dynamic-config-ci.yml
                          
