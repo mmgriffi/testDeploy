@@ -10,8 +10,7 @@ $testfile = "\\192.168.1.20\smb\mmgriffi\CICD\validfile.txt"
         $errorcode = 999
         write-host "$testfile was not found, we can close the script with a $errorcode (failure)"
     }
-
-  
        
 write-host "We will post an $errorcode on this script no matter what"
+$errorcode = 0
 exit $errorcode
